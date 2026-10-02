@@ -9,12 +9,14 @@
 </head>
 
 <body>
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Đổi giao diện"></button>
     <header class="site-header container">
         <a class="logo" href="#">Hoàng Châu</a>
         <nav class="site-nav">
             <ul>
                 <li><a href="#about">Giới thiệu</a></li>
                 <li><a href="#projects">Dự án</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
                 <li><a href="#contact">Liên hệ</a></li>
             </ul>
         </nav>
@@ -27,36 +29,52 @@
                     nhiên, ĐHQG-HCM</p>
                 <a class="button" href="#contact">Liên hệ</a>
             </div>
-            <img src="ảnh thẻ.jpg" alt="Ảnh chân dung Nguyễn Hoàng Châu">
+            <img src="ảnh thẻ 2.jpg" alt="Ảnh chân dung Nguyễn Hoàng Châu">
         </section>
 
         <section id="projects">
             <h2>Dự án</h2>
+            <input id="search" placeholder="Tìm dự án..." />
             <div id="filters"></div>
-            <ul id="project-list"></ul>
-            <template id="project-card">
-                <li class="card">
-                    <h3></h3>
-                    <p class="tags"></p>
-                </li>
-            </template>
+            <ul id="project-list">
+                <template id="project-card">
+                    <li class="card">
+                        <h3></h3>
+                        <p class="tags"></p>
+                    </li>
+                </template>
+            </ul>
         </section>
 
         <section id="skills">
             <h2>Kỹ năng</h2>
             <ul class="tags">
+                <!-- Ngôn ngữ lập trình -->
+                <li>C++</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+
+                <!-- Phần cứng & Tự động hóa -->
+                <li>IoT</li>
+                <li>ESP32</li>
+                <li>Digital Logic</li>
+                <li>PLC</li>
+
+                <!-- Công cụ & Phần mềm -->
                 <li>Proteus</li>
                 <li>Wokwi</li>
-                <li>Arduino IDE</li>
-                <li>ESP32</li>
-                <li>DS18B20</li>
-                <li>Python</li>
-                <li>U-Net</li>
+
+                <!-- AI & Dữ liệu -->
+                <li>Deep Learning</li>
+                <li>Computer Vision</li>
             </ul>
         </section>
 
         <section id="contact">
             <h2>Liên hệ</h2>
+            <p class="contact-desc">
+                Để lại lời nhắn bên dưới, nếu bạn muốn trao đổi nhiều hơn về các đề tài nhé.
+            </p>
             <form>
                 <div class="field">
                     <label for="name">Họ tên</label>
@@ -73,6 +91,7 @@
                 <button class="button">Gửi</button>
             </form>
         </section>
+
     </main>
     <footer>
         <p>© 2026 Nguyễn Hoàng Châu</p>
@@ -84,7 +103,7 @@
                 Châu</a>
         </p>
     </footer>
-    <script type="module" scr="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 
 </html>
