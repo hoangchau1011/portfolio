@@ -1,5 +1,21 @@
 import { projects } from './data.js';
 
+import { loadRepos } from './repos.js';
+
+const state = document.querySelector('#repos-state');
+const list = document.querySelector('#repo-list');
+
+function repoCard(r) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = r.url;
+    a.textContent = r.name;
+    const p = document.createElement('p');
+    p.textContent = `★ ${r.stars} · ${r.desc}`;
+    li.append(a, p);
+    return li;
+}
+
 const ul = document.querySelector(
     '#project-list');
 const tpl = document.querySelector(
@@ -122,3 +138,21 @@ contactForm.addEventListener('submit', (e) => {
 
     contactForm.appendChild(messageEl);
 });
+
+async function showRepos(user) {
+    state.textContent = 'Đang tải…';
+    list.textContent = '';
+    try {
+        const repos = await loadRepos(user);
+        state.textContent = repos.length ? ''
+            : 'Chưa có repo công khai.';
+        repos.forEach((r) => list.append(repoCard(r)));
+    } catch (err) {
+        state.textContent = 'Không tải được: ' + err.message;
+        const again = document.createElement('button');
+        again.textContent = 'Thử lại';
+        again.onclick = () => showRepos(user);
+        state.append(again);
+    }
+}
+showRepos('hoangchau1011');
