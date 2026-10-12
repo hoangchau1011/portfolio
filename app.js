@@ -7,8 +7,10 @@ const list = document.querySelector('#repo-list');
 
 function repoCard(r) {
     const li = document.createElement('li');
+    li.classList.add('card');
     const a = document.createElement('a');
     a.href = r.url;
+    a.target = '_blank';
     a.textContent = r.name;
     const p = document.createElement('p');
     p.textContent = `★ ${r.stars} · ${r.desc}`;
