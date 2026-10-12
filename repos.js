@@ -1,4 +1,5 @@
 export async function loadRepos(user) {
+    const cached = readCache(user);
     const url =
         `https://api.github.com/users/${user}` +
         '/repos?sort=updated&per_page=6';
@@ -9,12 +10,14 @@ export async function loadRepos(user) {
     }
 
     const data = await res.json();
-    return data.map((r) => ({
+    const repos = data.map((r) => ({
         name: r.name,
         url: r.html_url,
         desc: r.description ?? 'Chưa có mô tả',
         stars: r.stargazers_count,
     }));
+    writeCache(user, repos);
+    return repos;
 }
 
 const TTL = 10 * 60 * 1000;   // 10 phút
